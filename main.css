@@ -1,0 +1,8 @@
+.calculator-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid red;
+  height: 100%;margin: 100px;
+  flex-direction: column;
+}
