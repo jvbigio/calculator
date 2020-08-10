@@ -29,7 +29,8 @@ body {
   align-items: center;
   justify-content: space-around;
   /* background: #f9f9f9; */
-  background: darkgrey;
+  /* background: darkgrey; */
+  background: #28283e;
   height: 100%;
   width: 300px;
   padding: 50px;
@@ -41,13 +42,21 @@ body {
 
 .calculator-display {
   display: flex;
-  /* background: #fff; */
-  /* background: silver; */
-  background: #9b8e89;
+  background: silver;
   border: 3px solid black;
-  border-radius: 10%;
   width: 100%;
   padding: 0.625rem;
+  height: 4.375rem;
+  border-radius: 0.3rem;
+  margin-top: -0.75rem;
+}
+
+.digits {
+  /* font-size: 2.8125rem; */
+  /* font-size: 5rem; */
+  font-size: 70px;
+  text-align: right;
+  margin-right: 0.3rem;
 }
 
 .buttons-container {
