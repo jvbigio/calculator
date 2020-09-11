@@ -21,12 +21,13 @@ numberKeys.forEach(numKeys => {
 // const operationsArray = [].slice.call(document.querySelectorAll('.operation'))
 const operations = document.querySelectorAll('.operation')
 
-// operations.forEach(operator => operator.addEventListener('click', e => {
-//   // console.log(operator.textContent) // +, -, *, / (strings)
-//   if (operator.textContent === '=') {
-//     calculator()
-//   }
-// }))
+operations.forEach(operator => operator.addEventListener('click', e => {
+  // console.log(operator.textContent) // +, -, *, / (strings)
+  if (operator.textContent === '=') {
+    console.log('clicked')
+    // calculator()
+  }
+}))
 
 // const mathOperators = ['+', '-', '*', '/', '=']
 
@@ -55,31 +56,41 @@ function runCalculator () {
 }
 
 function calculator (num1, operator, num2) {
-  const firstNum = num1
-  const secondNum = num2
-  // operations.forEach(operator => operator.addEventListener('click', e => {
-  //   // console.log(operator.textContent) // +, -, *, / (strings)
-  //   if (operator.textContent === '=') {
-  //     console.log('clicked') // works
+  // const firstNum = num1
+  // const secondNum = num2
+  // const answer = [num1, num2]
+  operations.forEach(operator => operator.addEventListener('click', e => {
+    // console.log(operator.textContent) // +, -, *, / (strings)
+    if (operator.textContent === '=' && operator === '*') {
+      console.log('clicked') // works
   //   }
   // }))
   // console.log(firstNum, secondNum) // works
   // console.log(typeof firstNum, typeof secondNum) // number
 
   if (operator === '*') {
-    return num1 * num2
+    // return num1 * num2
+    result.innerHTML = num1 * num2
   } else if (operator === '/') {
-    return num1 / num2
+    // return num1 / num2
+    result.innerHTML = num1 / num2
   } else if (operator === '+') {
-    return num1 + num2
+    // return num1 + num2
+    result.innerHTML = num1 + num2
   } else if (operator === '-') {
-    return num1 - num2
+    // return num1 - num2
+    result.innerHTML = num1 - num2
   }
-  return firstNum + secondNum
+  // return firstNum + secondNum
+  // console.log(typeof answer) // number
+  // return answer
+  // result.innerHTML = firstNum + secondNum
 }
+
 console.log(calculator(5, '*', 5))
-// console.log(calculator(5, 5, '/'))
-// console.log(calculator(5, 5, '*'))
+console.log(calculator(5, '/', 5))
+console.log(calculator(5, '+', 5))
+console.log(calculator(5, '-', 5))
 
 // listen for math operator click
 // operations.forEach(operator => {
