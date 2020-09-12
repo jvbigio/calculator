@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   runCalculator()
 })
 
+const operations = document.querySelectorAll('.operation')
 const result = document.querySelector('.result')
 const numberKeys = document.querySelectorAll('.number')
 numberKeys.forEach(numKeys => {
@@ -18,7 +19,7 @@ numberKeys.forEach(numKeys => {
     // console.log(typeof e.target.textContent) // string
     // console.log(parseInt(e.target.textContent)) // number
     // renders numbers on calculator display screen:
-    result.innerHTML = numKeys.textContent
+    result.innerHTML += numKeys.textContent
   })
 })
 const buttons = document.querySelector('.buttons-container')
@@ -35,17 +36,17 @@ buttons.addEventListener('click', e => {
 // }))
 
 // run only if = sign pressed
-// function runCalculator () {
-//   operations.forEach(operator => operator.addEventListener('click', e => {
-//     if (operator.textContent === '=') {
-//       calculator()
-//     }
-//   }))
-// }
+function runCalculator () {
+  operations.forEach(operator => operator.addEventListener('click', e => {
+    if (operator.textContent === '=') {
+      calculate()
+    }
+  }))
+}
 
-function runCalculator(num1, operator, num2) {
+function calculate (num1, operator, num2) {
   if (operator === '*') {
-    // console.log(num1, num2) // 5, 2
+    // console.log(num1, num2) // strings '5', '2'
     return parseInt(num1) * parseInt(num2)
   } else if (operator === '/') {
     return parseInt(num1) / parseInt(num2)
