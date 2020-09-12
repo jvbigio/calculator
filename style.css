@@ -28,8 +28,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  /* background: #f9f9f9; */
-  /* background: darkgrey; */
+  min-width: 550px;
   background: #28283e;
   height: 100%;
   width: 300px;
@@ -43,51 +42,61 @@ body {
 .calculator-display {
   display: flex;
   background: silver;
-  border: 3px solid black;
   width: 100%;
   padding: 0.625rem;
   height: 4.375rem;
   border-radius: 0.3rem;
+  justify-content: flex-end;
+  align-items: center;
   margin-top: -0.75rem;
+  min-width: 500px;
+  text-align: right;
+  font-size: 2.8125rem;
 }
 
-.digits {
-  font-size: 2.8125rem;
-  text-align: right;
-  margin-right: 0.3rem;
-}
 
 .buttons-container {
-  /* for debugging */
-  /* border: 3px solid green; */
-  padding: 10px;
-  height: 1000%;
-  width: 100%;
-  flex: 1;
   display: flex;
-  /* flex-direction: column; */
   flex-wrap: wrap;
-  justify-content: space-between;
+  flex: 0 1 50%;
+  min-width: 400px;
+  margin-top: 1rem;
+  height: 90%;
 }
-
-/* no effect */
-/* .buttons-container>div {
-  flex: 1;
-} */
-
-/* .calc-buttons {
-  border: 3px solid yellow;
-  height: 100px;
-  padding: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-} */
 
 button {
   display: flex;
-  /* font-size: 16px; */
+  /* flex-wrap: wrap; */
+  flex: 0 1 25%;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  background: #343130;
+  color: #f8f8ff;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.equals {
+  flex-grow: 2;
+}
+
+/* original */
+/* .buttons-container {
+  padding: 10px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+} */
+
+/* original */
+/* button {
+  display: flex;
   flex: 1;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -97,7 +106,7 @@ button {
   background: #343130;
   color: #f8f8ff;
   border-radius: 7px;
-}
+} */
 
 .operation {
   background: orange;
