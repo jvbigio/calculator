@@ -25,7 +25,7 @@ buttons.addEventListener('click', e => {
 })
 
 function calculator (num1, operator, num2) {
-  const savedNums = []
+  const saved = []
   let sum
   if (operator === '*') {
     // return num1 * num2
@@ -33,11 +33,11 @@ function calculator (num1, operator, num2) {
     // return num1 / num2
   } else if (operator === '+') {
     // return num1 + num2
-    savedNums.push(num1)
+    saved.push(num1)
     // console.log(num1)
-    savedNums.push(num2)
+    saved.push(num2)
     // console.log(num2)
-    sum = savedNums.reduce((a, b) => a + b, 0)
+    sum = saved.reduce((a, b) => a + b, 0)
     // console.log(sum)
   } else if (operator === '-') {
     // return num1 - num2
