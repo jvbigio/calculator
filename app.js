@@ -24,6 +24,9 @@ const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', e => {
   const button = e.target
   // console.log(button)
+  if (button.classList.contains('number')) {
+    console.log(button.textContent)
+  }
 })
 
 function calculator (num1, operator, num2) {
