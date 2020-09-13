@@ -78,6 +78,7 @@ button {
   color: #f8f8ff;
   border-radius: 7px;
   cursor: pointer;
+  outline: none;
 }
 
 .equals {

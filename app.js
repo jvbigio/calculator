@@ -1,34 +1,39 @@
 // const operations = document.querySelectorAll('.operation')
 const result = document.querySelector('.result')
+// operation equal to whatever operation was pressed
 let num1, num2, operation
 const savedNumbers = []
 
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', e => {
-  const numbers = parseInt(e.target.textContent) // original
-  // const numbers = e.target.textContent
+  // const btnPressed = parseInt(e.target.textContent) // original
+  // don't parseInt yet, bc not all keys will be numbers here
+  const btnPressed = e.target.textContent
+  console.log(btnPressed)
+  const isNumberOrOperator = e.target
+  console.log(isNumberOrOperator)
 
-  const button = e.target
-  if (button.classList.contains('number')) {
-    result.innerHTML += numbers
-    num1 = parseInt(button.textContent) // original
-    // num1 = button.textContent
+  if (isNumberOrOperator.classList.contains('number')) {
+    // result.innerHTML += btnPressed // original
+    // append result when an operation is pushed, check to see if u update screen with current button pressed or add onto it happens on line below:
+    result.innerHTML += num1
+    num1 = parseInt(isNumberOrOperator.textContent) // original
+    // num1 = isNumberOrOperator.textContent
     console.log(num1)
     result.innerHTML = num1
 
     // console.log(num2)
     // savedNumbers.push(num1)
     // console.log(savedNumbers)
-  } else if (button.classList.contains('operation')) {
+  } else if (isNumberOrOperator.classList.contains('operation')) {
     console.log('operation button was pressed!!')
     savedNumbers.push(num1)
     result.innerHTML = num1
     // result.innerHTML = ''
 
-
-    // num2 = (parseInt(button.textContent))
+    // num2 = (parseInt(isNumberOrOperator.textContent))
     // // console.log(num2)
-    // console.log(button.textContent)
+    // console.log(isNumberOrOperator.textContent)
     // savedNumbers.push(num1)
     console.log(savedNumbers)
   }
