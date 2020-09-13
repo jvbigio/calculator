@@ -4,7 +4,9 @@ let num1, num2, operation
 const savedNumbers = []
 
 const buttons = document.querySelector('.buttons-container')
-buttons.addEventListener('click', e => {
+buttons.addEventListener('click', getInput)
+
+function getInput (e) {
   const btnPressed = e.target.textContent // innerText of btn pressed
   const isNumberOrOperator = e.target // ex: <button class="number"</button>
 
@@ -27,13 +29,13 @@ buttons.addEventListener('click', e => {
     // savedNumbers.push(num1)
     if (isNumberOrOperator.textContent === '=') {
       console.log('equal sign pressed') // works
-      console.log(savedNumbers) // [1, 2]
+      // console.log(savedNumbers) // [1, 2]
       // console.log(savedNumbers[0]) // 1
       // console.log(savedNumbers[1]) // 2
       num1 = savedNumbers[0] // 1
       num2 = savedNumbers[1] // 2
-      console.log(num1)
-      console.log(num2)
+      // console.log(num1)
+      // console.log(num2)
 
       calculator(num1, operation, num2)
       // console.log(calculator(num1, num2))
@@ -45,31 +47,40 @@ buttons.addEventListener('click', e => {
       // calculator(num1, operation, num2)
     }
   }
-})
+}
+
 
 function calculator (num1, operator, num2) {
-  console.log(num1)
-  console.log(operator)
-  console.log(num2)
+  // console.log(num1)
+  // console.log(operator)
+  // console.log(num2)
   const saved = []
-  let sum
+  let answer
   if (operator === '*') {
-    // return num1 * num2
+    answer = num1 * num2
+    // return answer
   } else if (operator === '/') {
-    // return num1 / num2
+    answer = num1 / num2
+    // return answer
   } else if (operator === '+') {
-    // return num1 + num2
-    saved.push(num1)
-    console.log(num1)
-    saved.push(num2)
-    console.log(num2)
+    answer = num1 + num2
+    // return answer
+    saved.push(answer)
+    // saved.push(num1)
+    // console.log(num1)
+    // saved.push(num2)
+    // console.log(num2)
     // sum = saved.reduce((a, b) => a + b, 0)
-    sum = saved.reduce((num1, num2) => num1 + num2, 0)
+    // answer = saved.reduce((num1, num2) => num1 + num2, 0)
     // console.log(sum)
   } else if (operator === '-') {
-    // return num1 - num2
+    // answer = num1 - num2
+    // return answer
   }
-  console.log(sum) // 3!!!! YAY
-  return sum
+  result.innerHTML = answer // 3
+  console.log(answer) // 3!!!! YAY
+  console.log(saved) // [3]
+  return saved
+  // return answer
 }
 // console.log(calculator(50, '+', 1))
