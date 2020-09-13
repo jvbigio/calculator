@@ -36,6 +36,10 @@ buttons.addEventListener('click', e => {
     // console.log(isNumberOrOperator.textContent)
     // savedNumbers.push(num1)
     console.log(savedNumbers)
+
+    // if '=' sign pressed:
+    // try this:
+    // calculator(num1, operator, num2)
   }
 })
 
