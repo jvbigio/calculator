@@ -9,7 +9,7 @@ buttons.addEventListener('click', e => {
   const isNumberOrOperator = e.target // ex: <button class="number"</button>
 
   if (isNumberOrOperator.classList.contains('number')) {
-    result.innerHTML += btnPressed // original
+    result.innerHTML = btnPressed // original
     // append result when an operation is pushed, check to see if u update screen with current button pressed or add onto it happens on line below:
     // result.innerHTML += num1
     num1 = parseInt(isNumberOrOperator.textContent) // original
@@ -20,13 +20,27 @@ buttons.addEventListener('click', e => {
     // savedNumbers.push(num1) // original
     num1 = savedNumbers.push(num1) // original
     result.innerHTML = num1
-    operation = isNumberOrOperator.textContent
+    if (isNumberOrOperator.textContent !== '=') {
+      operation = isNumberOrOperator.textContent
+    }
     // console.log(operation) // +
     // savedNumbers.push(num1)
     if (isNumberOrOperator.textContent === '=') {
       console.log('equal sign pressed') // works
-      console.log(savedNumbers)
-      console.log(operation)
+      console.log(savedNumbers) // [1, 2]
+      // console.log(savedNumbers[0]) // 1
+      // console.log(savedNumbers[1]) // 2
+      num1 = savedNumbers[0] // 1
+      num2 = savedNumbers[1] // 2
+      console.log(num1)
+      console.log(num2)
+
+      calculator(num1, operation, num2)
+      // console.log(calculator(num1, num2))
+      // savedNumbers.forEach(number => {
+      //   console.log(number) // 1, 2
+      // })
+      // console.log(operation)
       // console.log(num1, operation, num2)
       // calculator(num1, operation, num2)
     }
@@ -34,6 +48,9 @@ buttons.addEventListener('click', e => {
 })
 
 function calculator (num1, operator, num2) {
+  console.log(num1)
+  console.log(operator)
+  console.log(num2)
   const saved = []
   let sum
   if (operator === '*') {
@@ -52,7 +69,7 @@ function calculator (num1, operator, num2) {
   } else if (operator === '-') {
     // return num1 - num2
   }
+  console.log(sum) // 3!!!! YAY
   return sum
 }
-// console.log(calculator)
 // console.log(calculator(50, '+', 1))
