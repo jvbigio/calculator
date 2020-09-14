@@ -1,25 +1,23 @@
 const result = document.querySelector('.result')
 let num1, num2, operation
-const inputedNumbers = []
 let isFirstKeyPressed = true
-const outputedResult = ''
-
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInput)
 
 function getInput (e) {
   const keyPressed = e.target
-  // const outputResult = result.textContent
-  // console.log(outputResult)
-  // console.log(keyPressed)
   if (keyPressed.classList.contains('number')) {
     if (isFirstKeyPressed) {
-      num1 = e.target.textContent
-      // inputedNumbers.push(num1)
-      result.innerHTML = num1
+      const number = e.target.textContent
+      num1 = e.target.textContent * 10
+      num1 = parseFloat(num1) + parseFloat(number)
+      result.innerHTML += number
     } else {
-      num2 = e.target.textContent
-      result.innerHTML = num2
+      result.innerHTML = ''
+      const number = e.target.textContent
+      num2 = e.target.textContent * 10
+      num2 = parseFloat(num2) + parseFloat(number)
+      result.innerHTML = number
     }
   } else if (keyPressed.classList.contains('operation')) {
     isFirstKeyPressed = false
