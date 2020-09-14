@@ -42,4 +42,4 @@ ACTUAL: shows 2 in the display
 
 6.) Click on the equals button
 EXPECTATION: Show 33 in the display
-ACTUAL: ???
+ACTUAL: WORKS!
