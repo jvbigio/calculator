@@ -42,14 +42,14 @@ body {
 .calculator-display {
   display: flex;
   background: silver;
-  width: 100%;
+  /* width: 100%; */
   padding: 0.625rem;
   height: 4.375rem;
   border-radius: 0.3rem;
   justify-content: flex-end;
   align-items: center;
   margin-top: -0.75rem;
-  min-width: 500px;
+  min-width: 450px;
   text-align: right;
   font-size: 2.8125rem;
 }
@@ -70,7 +70,7 @@ button {
   flex: 0 1 25%;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  /* height: 50px;h */
   padding: 10px;
   font-weight: bold;
   font-size: 1rem;
