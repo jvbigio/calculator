@@ -26,9 +26,9 @@ function getInput (e) {
     console.log('operation button was pressed!!')
     // inputedNumbers.push(num1) // original
     // num1 = inputedNumbers.push(num1) // original
-    num1 = inputedNumbers.push(...num1) 
+    num1 = inputedNumbers.push(...num1)
     console.log(num1)
-    result.innerHTML = num1 
+    result.innerHTML = num1
     if (isNumberOrOperator.textContent !== '=') {
       operation = isNumberOrOperator.textContent
     }
@@ -46,7 +46,7 @@ function getInput (e) {
   }
 }
 
-function getFirstNumber() {
+function getFirstNumber () {
   return document.getElementsByClassName('number').value
 }
 
