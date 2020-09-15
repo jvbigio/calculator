@@ -1,17 +1,17 @@
 const result = document.querySelector('.result')
+const calcDisplay = document.querySelector('.calculator-display')
 let num1, num2, operation
 let isFirstKeyPressed = true
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInput)
 const savedNumbers = []
-// let numberTracker
 
 // [1,2,3,4,5].reduce((acc, current)=>acc+current, 0)
 
 function getInput (e) {
   const keyPressed = e.target
-  const numberTracker = result.innerHTML
-  console.log(numberTracker)
+  let numberTracker = result.innerHTML
+  console.log(numberTracker) // 1122
   console.log(keyPressed)
   if (keyPressed.classList.contains('number')) {
     if (isFirstKeyPressed) {
@@ -36,28 +36,32 @@ function getInput (e) {
       // result.innerHTML += number
       // num2 = e.target.textContent * 10
       // num2 = parseFloat(num2) + parseFloat(number)
-      console.log(num2)
+      console.log(num2) // 2
       savedNumbers.push(num2)
       // console.log(savedNumbers)
       // result.innerHTML += num2 // keep
-      result.innerHTML = numberTracker + keyPressed.textContent
+      // display correct but only same dbl digits: 11, 22, 33, etc
+      result.innerHTML = numberTracker[1]
+      console.log(keyPressed.innerHTML) // 2
+      result.innerHTML += keyPressed.innerHTML
       num2 += num2
     }
   } else if (keyPressed.classList.contains('operation')) {
+    isFirstKeyPressed = false
+    // num1 = '' // works but erases 11
     console.log(num1)
-    result.innerHTML = num1
-    // result.innerHTML = ''
+    
     savedNumbers.push(num1)
     console.log(savedNumbers)
     // result.innerHTML = savedNumbers[0]
 
-    isFirstKeyPressed = false
     if (keyPressed.textContent !== '=') {
       operation = keyPressed.textContent
     } else if (keyPressed.textContent === '=') {
       console.log(num1, operation, num2)
       calculator(num1, operation, num2)
     }
+    // numberTracker = ''
   }
 }
 
