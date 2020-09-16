@@ -18,7 +18,7 @@ EXPECTATION: Show 3 in the display
 ACTUAL: WORKS!
 
 // TEST CASE
-//Description: Adding 25 + 13 = 38
+// Description: Adding 25 + 13 = 38
 
 1.) Click on the number two button
 EXPECTATION: Show 2 in the display
@@ -29,7 +29,7 @@ EXPECTATION: Show 25 in the display
 ACTUAL: WORKS!
 
 3.) Click on the plus button
-EXPECTATION: Nothing. (Still showing 11 in the display)
+EXPECTATION: Nothing. (Still showing 25 in the display)
 ACTUAL: WORKS!
 
 4.) Click on the number one button
