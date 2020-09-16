@@ -1,11 +1,11 @@
 // const result = document.querySelector('.result')
-document.addEventListener('DOMContentLoaded', function () {
-  // renderScreen()
-  // captureDigits()
-})
+// document.addEventListener('DOMContentLoaded', function () {
+//   // renderScreen()
+//   // captureDigits()
+// })
 
 const calcDisplay = document.querySelector('.calculator-display')
-let firstNumberSet, secondNumberSet, operation
+let firstOperand, secondOperand, operation, currentNumber
 let isOperatorPressed = false
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInputType)
@@ -19,49 +19,50 @@ const calculator = {
 
 function getInputType (e) {
   const keyPressed = e.target
-
+  // first numberSet code block:
+  // if (keyPressed.classList.contains('number') && keyPressed.value !== '+') {
   if (keyPressed.classList.contains('number')) {
-    // debugger
-    firstNumberSet = keyPressed.value
-    console.log(firstNumberSet)
-    // calculator.num1 = firstNumberSet
-    captureDigits(keyPressed.value)
+    // captureDigits(keyPressed.value)
+    console.log('1st numbers')
+    firstOperand = keyPressed.value
+    secondOperand = firstOperand + keyPressed.value
+    console.log(firstOperand) // 11
+    calculator.num1 = firstOperand
+    console.log(secondOperand) // 22
+    calculator.num2 = secondOperand
+    // firstOperand = captureDigits(firstOperand)
+    calculator.displayOutput = keyPressed.value
   }
 
+  // second numberSet code block:
+  // if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     isOperatorPressed = true
-    // calculator.num1 = calculator.displayOutput
-    if (calculator.displayOutput !== '+') {
-      const beforeOperator = calculator.displayOutput
-      console.log(beforeOperator)
-     
-    }
-    firstNumberSet = calculator.displayOutput
-    console.log(firstNumberSet)
-    operator = keyPressed.value
-    calculator.operator = keyPressed.value
-    console.log(calculator)
-    captureDigits(operator)
-    console.log(`${operator} operator pressed!`)
-    // calcDisplay.innerHTML = operator
+    operation = keyPressed.value
+    // operation = captureDigits(operation)
+    console.log('2nd code block')
+    console.log(keyPressed.value)
+  }
+
+  if (keyPressed.value === '=') {
+    console.log(`${keyPressed.value} clicked`)
+    console.log(firstOperand, operation, secondOperand)
+    // calculate(firstOperand, operation, secondOperand)
   }
   renderScreen()
 }
 
-function captureDigits (numbers) {
-  console.log(numbers)
-  const displayOutput = calculator.displayOutput
-  // calculator.displayOutput = displayOutput === null ? numbers : displayOutput + numbers
-  // console.log(displayOutput)
-  const values = Object.values(calculator)
-  // calcDisplay.innerHTML = numbers + numbers
-  if (!displayOutput) {
-    calculator.displayOutput = numbers
-  } else {
-    calculator.displayOutput += numbers
-  }
-  console.log(values)
-}
+// function captureDigits (numbers) {
+//   console.log(numbers)
+//   const displayOutput = calculator.displayOutput
+//   const values = Object.values(calculator)
+//   if (!displayOutput) {
+//     calculator.displayOutput = numbers
+//   } else {
+//     calculator.displayOutput += numbers
+//   }
+//   console.log(values)
+// }
 
 function calculate (num1, operator, num2) {
   let computedValue
@@ -75,10 +76,11 @@ function calculate (num1, operator, num2) {
   } else if (operator === '-') {
 
   }
-  renderScreen(computedValue)
+  console.log(computedValue)
+  // return renderScreen(computedValue)
 }
 
 function renderScreen (data) {
   calcDisplay.textContent = calculator.displayOutput
-  // calcDisplay.textContent = '0'
+  console.log(data)
 }
