@@ -25,38 +25,30 @@ function getInputType (e) {
   const keyPressed = e.target
 
   if (keyPressed.classList.contains('number') && !isOperatorPressed) {
-    firstOperand = keyPressed.value
-    secondOperand = firstOperand
-    currentInput(firstOperand)
+    firstOperand += keyPressed.value
+    currentInput(keyPressed.value)
   } else if (keyPressed.classList.contains('number') && isOperatorPressed) {
-    secondOperand = keyPressed.value
-    currentInput(secondOperand)
+    secondOperand += keyPressed.value
+    currentInput(keyPressed.value)
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     isOperatorPressed = true
     operation = keyPressed.value
-    currentInput(operation)
+    currentInput(keyPressed.value)
   }
 
   if (keyPressed.value === '=') {
-    console.log(firstOperand, operation, secondOperand)
     calculator.displayOutput = ''
-    // ???? maybe accumulatedValue needed elsewhere ???? //
     accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
-    console.log(accumulatedValue)
     calculate(firstOperand, operation, secondOperand)
+    console.log(accumulatedValue) // (38) => storedValue of 25 + 13
   }
   renderScreen()
 }
 
 function currentInput (numbers) {
-  const displayOutput = calculator.displayOutput
-  if (!displayOutput) {
-    calculator.displayOutput = numbers
-  } else {
-    calculator.displayOutput += numbers
-  }
+  calculator.displayOutput += numbers
   renderScreen(numbers)
 }
 
