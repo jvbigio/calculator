@@ -18,28 +18,28 @@ EXPECTATION: Show 3 in the display
 ACTUAL: WORKS!
 
 // TEST CASE
-// Description: Adding 11 + 22 = 33
+// Description: Adding 25 + 13 = 38
 
-1.) Click on the number one button
-EXPECTATION: Show 1 in the display
+1.) Click on the number two button
+EXPECTATION: Show 2 in the display
 ACTUAL: WORKS!
 
-2.) Click on the number two button
-EXPECTATION: Show 11 in the display
+2.) Click on the number five button
+EXPECTATION: Show 25 in the display
 ACTUAL: WORKS!
 
 3.) Click on the plus button
 EXPECTATION: Nothing. (Still showing 11 in the display)
 ACTUAL: WORKS!
 
-4.) Click on the number two button
-EXPECTATION: Show 2 in the display
+4.) Click on the number one button
+EXPECTATION: Show 1 in the display
 ACTUAL: WORKS!
 
-5.) Click on the number two button
-EXPECTATION: Show 22 in the display
+5.) Click on the number three button
+EXPECTATION: Show 13 in the display
 ACTUAL: WORKS!
 
 6.) Click on the equals button
-EXPECTATION: Show 33 in the display
-ACTUAL: shows 3 in the display
+EXPECTATION: Show 38 in the display
+ACTUAL: shows 8 in the display
