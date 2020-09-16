@@ -22,7 +22,7 @@ function getInputType (e) {
   // first numberSet code block:
   // if (keyPressed.classList.contains('number') && keyPressed.value !== '+') {
   if (keyPressed.classList.contains('number')) {
-    // captureDigits(keyPressed.value)
+    captureDigits(keyPressed.value)
     console.log('1st numbers')
     firstOperand = keyPressed.value
     secondOperand = firstOperand + keyPressed.value
@@ -52,17 +52,17 @@ function getInputType (e) {
   renderScreen()
 }
 
-// function captureDigits (numbers) {
-//   console.log(numbers)
-//   const displayOutput = calculator.displayOutput
-//   const values = Object.values(calculator)
-//   if (!displayOutput) {
-//     calculator.displayOutput = numbers
-//   } else {
-//     calculator.displayOutput += numbers
-//   }
-//   console.log(values)
-// }
+function captureDigits (numbers) {
+  console.log(numbers)
+  const displayOutput = calculator.displayOutput
+  const values = Object.values(calculator)
+  if (!displayOutput) {
+    calculator.displayOutput = numbers
+  } else {
+    calculator.displayOutput += numbers
+  }
+  console.log(values)
+}
 
 function calculate (num1, operator, num2) {
   let computedValue
@@ -77,7 +77,7 @@ function calculate (num1, operator, num2) {
 
   }
   console.log(computedValue)
-  // return renderScreen(computedValue)
+  return renderScreen(computedValue)
 }
 
 function renderScreen (data) {
