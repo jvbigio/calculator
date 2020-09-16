@@ -17,7 +17,7 @@ const calculator = {
   operator: null
 }
 
-function getInputType(e) {
+function getInputType (e) {
   const keyPressed = e.target
 
   if (keyPressed.classList.contains('number')) {
@@ -34,7 +34,6 @@ function getInputType(e) {
     if (calculator.displayOutput !== '+') {
       const beforeOperator = calculator.displayOutput
       console.log(beforeOperator)
-
     }
     firstNumberSet = calculator.displayOutput
     console.log(firstNumberSet)
@@ -48,7 +47,7 @@ function getInputType(e) {
   renderScreen()
 }
 
-function captureDigits(numbers) {
+function captureDigits (numbers) {
   console.log(numbers)
   const displayOutput = calculator.displayOutput
   // calculator.displayOutput = displayOutput === null ? numbers : displayOutput + numbers
@@ -63,7 +62,7 @@ function captureDigits(numbers) {
   console.log(values)
 }
 
-function calculate(num1, operator, num2) {
+function calculate (num1, operator, num2) {
   let computedValue
 
   if (operator === '*') {
@@ -78,7 +77,7 @@ function calculate(num1, operator, num2) {
   renderScreen(computedValue)
 }
 
-function renderScreen(data) {
+function renderScreen (data) {
   calcDisplay.textContent = calculator.displayOutput
   // calcDisplay.textContent = '0'
 }
