@@ -5,65 +5,50 @@
 // })
 
 const calcDisplay = document.querySelector('.calculator-display')
-let firstOperand, secondOperand, operation, accumulatedValue
+let firstOperand = ''
+let secondOperand = ''
+let operation = ''
+let accumulatedValue = ''
 let isOperatorPressed = false
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInputType)
 
 const calculator = {
-  displayOutput: null,
-  firstNumbers: null,
-  secondNumbers: null,
-  accumulatedValue: null,
-  operator: null
+  displayOutput: '',
+  firstNumbers: '',
+  secondNumbers: '',
+  accumulatedValue: '',
+  operator: ''
 }
 
 function getInputType (e) {
   const keyPressed = e.target
 
   if (keyPressed.classList.contains('number') && !isOperatorPressed) {
-    // secondOperand = firstOperand
-    // currentInput(firstOperand) // original
-    firstOperand = keyPressed.value
-    // secondOperand = keyPressed.value
-    // accumulatedValue = firstOperand + secondOperand
-    currentInput(firstOperand)
-    // TEST CASE: 25 + 13 = 38
-    console.log(firstOperand) // 2  5
+    firstOperand += keyPressed.value
+    currentInput(keyPressed.value)
   } else if (keyPressed.classList.contains('number') && isOperatorPressed) {
-    calculator.displayOutput = ''
-
-
-    secondOperand = keyPressed.value
-    accumulatedValue = firstOperand + secondOperand
-
-    currentInput(secondOperand)
-    console.log(accumulatedValue)
-    currentInput(accumulatedValue)
+    secondOperand += keyPressed.value
+    currentInput(keyPressed.value)
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     isOperatorPressed = true
     operation = keyPressed.value
-    console.log(accumulatedValue)
-    currentInput(operation)
+    currentInput(keyPressed.value)
   }
 
   if (keyPressed.value === '=') {
-    console.log(firstOperand, operation, secondOperand, accumulatedValue) // 5 + 3
     calculator.displayOutput = ''
+    accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
     calculate(firstOperand, operation, secondOperand)
+    console.log(accumulatedValue) // (38) => storedValue of 25 + 13
   }
   renderScreen()
 }
 
 function currentInput (numbers) {
-  const displayOutput = calculator.displayOutput
-  if (!displayOutput) {
-    calculator.displayOutput = numbers
-  } else {
-    calculator.displayOutput += numbers
-  }
+  calculator.displayOutput += numbers
   renderScreen(numbers)
 }
 
