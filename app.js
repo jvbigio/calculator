@@ -25,28 +25,32 @@ function getInputType (e) {
     // secondOperand = firstOperand
     // currentInput(firstOperand) // original
     firstOperand = keyPressed.value
-    secondOperand = keyPressed.value
-    accumulatedValue = firstOperand + secondOperand
+    // secondOperand = keyPressed.value
+    // accumulatedValue = firstOperand + secondOperand
     currentInput(firstOperand)
     // TEST CASE: 25 + 13 = 38
     console.log(firstOperand) // 2  5
-    console.log(secondOperand) // 2  5
-    console.log(accumulatedValue) // 22  55
   } else if (keyPressed.classList.contains('number') && isOperatorPressed) {
+    calculator.displayOutput = ''
+
+
     secondOperand = keyPressed.value
+    accumulatedValue = firstOperand + secondOperand
+
     currentInput(secondOperand)
-    console.log(accumulatedValue) // (2) 55
+    console.log(accumulatedValue)
     currentInput(accumulatedValue)
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     isOperatorPressed = true
     operation = keyPressed.value
+    console.log(accumulatedValue)
     currentInput(operation)
   }
 
   if (keyPressed.value === '=') {
-    console.log(firstOperand, operation, secondOperand) // 5 + 3
+    console.log(firstOperand, operation, secondOperand, accumulatedValue) // 5 + 3
     calculator.displayOutput = ''
     calculate(firstOperand, operation, secondOperand)
   }
