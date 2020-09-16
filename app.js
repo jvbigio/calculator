@@ -37,8 +37,11 @@ function getInputType (e) {
   }
 
   if (keyPressed.value === '=') {
-    // console.log(firstOperand, operation, secondOperand)
+    console.log(firstOperand, operation, secondOperand)
     calculator.displayOutput = ''
+    // ???? maybe accumulatedValue needed elsewhere ???? //
+    accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+    console.log(accumulatedValue)
     calculate(firstOperand, operation, secondOperand)
   }
   renderScreen()
