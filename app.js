@@ -5,17 +5,20 @@
 // })
 
 const calcDisplay = document.querySelector('.calculator-display')
-let firstOperand, secondOperand, operation, accumulatedValue
+let firstOperand = ''
+let secondOperand = ''
+let operation = ''
+let accumulatedValue = ''
 let isOperatorPressed = false
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInputType)
 
 const calculator = {
-  displayOutput: null,
-  firstNumbers: null,
-  secondNumbers: null,
-  accumulatedValue: null,
-  operator: null
+  displayOutput: '',
+  firstNumbers: '',
+  secondNumbers: '',
+  accumulatedValue: '',
+  operator: ''
 }
 
 function getInputType (e) {
