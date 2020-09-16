@@ -23,12 +23,17 @@ function getInputType (e) {
 
   if (keyPressed.classList.contains('number') && !isOperatorPressed) {
     firstOperand = keyPressed.value
-    secondOperand = firstOperand
+    // secondOperand = firstOperand
+    // currentInput(firstOperand) // original
+    accumulatedValue = firstOperand + keyPressed.value // 11
     currentInput(firstOperand)
-
+    console.log(accumulatedValue)
   } else if (keyPressed.classList.contains('number') && isOperatorPressed) {
     secondOperand = keyPressed.value
     currentInput(secondOperand)
+    accumulatedValue = firstOperand + keyPressed.value // 11
+    console.log(accumulatedValue)
+    currentInput(accumulatedValue)
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
@@ -38,10 +43,9 @@ function getInputType (e) {
   }
 
   if (keyPressed.value === '=') {
-    // console.log(firstOperand, operation, secondOperand)
+    console.log(firstOperand, operation, secondOperand)
     calculator.displayOutput = ''
     calculate(firstOperand, operation, secondOperand)
-
   }
   renderScreen()
 }
