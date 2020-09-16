@@ -6,12 +6,10 @@
 
 
 body {
-  background: #f8f8ff;
+  background: #f2f3f4;
 }
 
 .container {
-  /* for debugging */
-  /* border: 3px dotted red; */
   display: flex;
   margin-top: 100px;
   justify-content: center;
@@ -21,14 +19,12 @@ body {
 
 
 .calculator-body {
-  /* for debugging */
   border: 3px solid black;
   margin: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  /* min-width: 550px; */
   background: #28283e;
   height: 100%;
   width: 300px;
@@ -42,14 +38,12 @@ body {
 .calculator-display {
   display: flex;
   background: silver;
-  /* width: 100%; */
   padding: 0.625rem;
   height: 4.375rem;
   border-radius: 0.3rem;
   justify-content: flex-end;
   align-items: center;
   margin-top: -0.75rem;
-  /* min-width: 450px; */
   width: 250px;
   text-align: right;
   font-size: 2.8125rem;
@@ -60,19 +54,11 @@ body {
   display: grid;
   display: flex;
   flex-wrap: wrap;
-  /* flex: 0 1 50%; */
-  /* min-width: 400px; */
   margin-top: 1rem;
-  /* height: 90%; */
 }
 
 button {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
   flex: 0 1 25%;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* height: 50px;h */
   padding: 10px;
   font-weight: bold;
   font-size: 1rem;
@@ -94,7 +80,6 @@ button {
 
 .equals {
   flex-grow: 4;
-  /* flex: 4; */
 }
 
 .clear-screen {
@@ -106,27 +91,3 @@ button {
 .memory-add {
   background-color: #77dd77;
 }
-
-/* original */
-/* .buttons-container {
-  padding: 10px;
-  width: 100%;
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-} */
-
-/* original */
-/* button {
-  display: flex;
-  flex: 1;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: auto;
-  padding: 10px;
-  display: flex;
-  background: #343130;
-  color: #f8f8ff;
-  border-radius: 7px;
-} */
