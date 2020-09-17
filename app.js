@@ -5,6 +5,7 @@
 // })
 
 const calcDisplay = document.querySelector('.calculator-display')
+const calculator = { displayOutput: '' }
 let firstOperand = ''
 let secondOperand = ''
 let operation = ''
@@ -13,9 +14,6 @@ let accumulatedValue = ''
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInputType)
 
-const calculator = {
-  displayOutput: ''
-}
 // TODO:
 // fix if statements
 
@@ -25,29 +23,45 @@ function getInputType (e) {
     firstOperand += keyPressed.value
     currentInput(keyPressed.value)
   } else if (keyPressed.classList.contains('number') && operation) {
-    console.log(operation)
+    console.log(operation) // + after pressing 1 + (2)
     secondOperand += keyPressed.value
-    currentInput(keyPressed.value)
-    // if (keyPressed.value === '+') {
-    //   accumulatedValue += keyPressed.value
-    //   currentInput(keyPressed.value)
+    // currentInput(keyPressed.value) // original
+    calculator.displayOutput = ''
+    currentInput(secondOperand)
+
+    // if (operation === '+') {
+    //   console.log(operation === '+') // true after pressing 2 in 1 + (2)
+    //   currentInput(secondOperand)
+    //   accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
     // }
+    // calculator.displayOutput = ''
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     if (operation) {
       // continuous
+      // console.log(operation) // true after 1 + 2 (+)
+      // currentInput(keyPressed.value) // original
+
+      currentInput(secondOperand)
+      if (operation === '+') {
+        // console.log(operation === '+') // true after 1 + 2 (+)
+        currentInput(secondOperand)
+        accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+      }
     } else {
       // not continuos
+      // console.log(operation)
+      // currentInput(accumulatedValue) // keep
+      // calculator.displayOutput = ''
+      // currentInput(firstOperand)
       operation = keyPressed.value
-      currentInput(keyPressed.value)
+      // currentInput(keyPressed.value) // original shows => + sign
     }
   }
 
   if (keyPressed.value === '=') {
     calculator.displayOutput = ''
-    // not in correct place bc other math operators will be pressed:
-    accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
     calculate(firstOperand, operation, secondOperand)
     console.log(accumulatedValue) // (38) => storedValue of 25 + 13
   }
@@ -56,7 +70,7 @@ function getInputType (e) {
 
 function currentInput (numbers) {
   calculator.displayOutput += numbers
-  renderScreen(numbers)
+  renderScreen()
 }
 
 function calculate (num1, operator, num2) {
@@ -74,6 +88,6 @@ function calculate (num1, operator, num2) {
   currentInput(computedValue)
 }
 
-function renderScreen (data) {
+function renderScreen () {
   calcDisplay.textContent = calculator.displayOutput
 }
