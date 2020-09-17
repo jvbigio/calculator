@@ -23,15 +23,26 @@ const calculator = {
 
 function getInputType (e) {
   const keyPressed = e.target
-
+  // is number AND !operator press
   if (keyPressed.classList.contains('number') && !isOperatorPressed) {
     firstOperand += keyPressed.value
     currentInput(keyPressed.value)
+    console.log(isOperatorPressed) // false
+    // is number AND operator has been pressed
   } else if (keyPressed.classList.contains('number') && isOperatorPressed) {
     secondOperand += keyPressed.value
     currentInput(keyPressed.value)
+    console.log(isOperatorPressed) // true
+
+    if (keyPressed.value === '+') {
+      console.log(isOperatorPressed) // true as soon as first + pressed
+      console.log(`${keyPressed.value} pressed`)
+      accumulatedValue += keyPressed.value
+      currentInput(keyPressed.value)
+    }
   }
 
+  // operation but NOT equal sign
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     isOperatorPressed = true
     operation = keyPressed.value
@@ -62,7 +73,7 @@ function calculate (num1, operator, num2) {
   } else if (operator === '+') {
     computedValue = parseFloat(num1) + parseFloat(num2)
   } else if (operator === '-') {
-
+    computedValue = parseFloat(num1) - parseFloat(num2)
   }
   currentInput(computedValue)
 }
