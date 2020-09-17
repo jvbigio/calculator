@@ -94,3 +94,7 @@ button {
 .memory-add {
   background-color: #77dd77;
 }
+
+.btn-active {
+  background: red;
+}
