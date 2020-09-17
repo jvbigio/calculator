@@ -9,50 +9,45 @@ let firstOperand = ''
 let secondOperand = ''
 let operation = ''
 let accumulatedValue = ''
-let isOperatorPressed = false
+// let isOperatorPressed = false
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInputType)
 
 const calculator = {
-  displayOutput: '',
-  firstNumbers: '',
-  secondNumbers: '',
-  accumulatedValue: '',
-  operator: ''
+  displayOutput: ''
 }
 // TODO:
 // fix if statements
 
 function getInputType (e) {
   const keyPressed = e.target
-
-  if (keyPressed.classList.contains('number') && !isOperatorPressed) {
+  if (keyPressed.classList.contains('number') && !operation) {
     firstOperand += keyPressed.value
     currentInput(keyPressed.value)
-    console.log(isOperatorPressed) // false
-  } else if (keyPressed.classList.contains('number') && isOperatorPressed) {
+  } else if (keyPressed.classList.contains('number') && operation) {
+    console.log(operation)
     secondOperand += keyPressed.value
     currentInput(keyPressed.value)
-    console.log(isOperatorPressed) // true
-    if (keyPressed.value === '+') {
-      console.log(isOperatorPressed)
-      console.log(`${keyPressed.value} pressed`)
-      accumulatedValue += keyPressed.value
-      console.log(accumulatedValue)
-      currentInput(keyPressed.value)
-    }
+    // if (keyPressed.value === '+') {
+    //   accumulatedValue += keyPressed.value
+    //   currentInput(keyPressed.value)
+    // }
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
-    isOperatorPressed = true
-    operation = keyPressed.value
-    currentInput(keyPressed.value)
+    if (operation) {
+      // continuous
+    } else {
+      // not continuos
+      operation = keyPressed.value
+      currentInput(keyPressed.value)
+    }
   }
 
   if (keyPressed.value === '=') {
     calculator.displayOutput = ''
     // not in correct place bc other math operators will be pressed:
-    // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+    accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
     calculate(firstOperand, operation, secondOperand)
     console.log(accumulatedValue) // (38) => storedValue of 25 + 13
   }
