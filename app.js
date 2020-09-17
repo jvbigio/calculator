@@ -20,16 +20,27 @@ const calculator = {
   accumulatedValue: '',
   operator: ''
 }
+// TODO:
+// fix if statements
 
-function getInputType (e) {
+function getInputType(e) {
   const keyPressed = e.target
 
   if (keyPressed.classList.contains('number') && !isOperatorPressed) {
     firstOperand += keyPressed.value
     currentInput(keyPressed.value)
+    console.log(isOperatorPressed) // false
   } else if (keyPressed.classList.contains('number') && isOperatorPressed) {
     secondOperand += keyPressed.value
     currentInput(keyPressed.value)
+    console.log(isOperatorPressed) // true
+    if (keyPressed.value === '+') {
+      console.log(isOperatorPressed)
+      console.log(`${keyPressed.value} pressed`)
+      accumulatedValue += keyPressed.value
+      console.log(accumulatedValue)
+      currentInput(keyPressed.value)
+    }
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
@@ -40,33 +51,34 @@ function getInputType (e) {
 
   if (keyPressed.value === '=') {
     calculator.displayOutput = ''
-    accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+    // not in correct place bc other math operators will be pressed:
+    // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
     calculate(firstOperand, operation, secondOperand)
     console.log(accumulatedValue) // (38) => storedValue of 25 + 13
   }
   renderScreen()
 }
 
-function currentInput (numbers) {
+function currentInput(numbers) {
   calculator.displayOutput += numbers
   renderScreen(numbers)
 }
 
-function calculate (num1, operator, num2) {
+function calculate(num1, operator, num2) {
   let computedValue
 
   if (operator === '*') {
-
+    computedValue = parseFloat(num1) * parseFloat(num2)
   } else if (operator === '/') {
-
+    computedValue = parseFloat(num1) / parseFloat(num2)
   } else if (operator === '+') {
     computedValue = parseFloat(num1) + parseFloat(num2)
   } else if (operator === '-') {
-
+    computedValue = parseFloat(num1) - parseFloat(num2)
   }
   currentInput(computedValue)
 }
 
-function renderScreen (data) {
+function renderScreen(data) {
   calcDisplay.textContent = calculator.displayOutput
 }
