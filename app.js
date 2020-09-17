@@ -12,15 +12,6 @@ let accumulatedValue = ''
 let isOperatorPressed = false
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInputType)
-// const btnPressed = document.querySelectorAll('button')
-// btnPressed.forEach(btn => {
-//   btn.addEventListener('click', e => {
-//     const activekey = e.target
-//     if (activekey) {
-//       activekey.classList.toggle('.btn-active')
-//     }
-//   })
-// })
 
 const calculator = {
   displayOutput: '',
@@ -35,28 +26,23 @@ const calculator = {
 function getInputType (e) {
   const keyPressed = e.target
 
-  // change button color when button pressed:
-
-  // is number AND !operator press
   if (keyPressed.classList.contains('number') && !isOperatorPressed) {
     firstOperand += keyPressed.value
     currentInput(keyPressed.value)
     console.log(isOperatorPressed) // false
-    // is number AND operator has been pressed
   } else if (keyPressed.classList.contains('number') && isOperatorPressed) {
     secondOperand += keyPressed.value
     currentInput(keyPressed.value)
     console.log(isOperatorPressed) // true
     if (keyPressed.value === '+') {
-      // new, find spot for it:
-      console.log(isOperatorPressed) // true as soon as 2nd + pressed
+      console.log(isOperatorPressed)
       console.log(`${keyPressed.value} pressed`)
       accumulatedValue += keyPressed.value
+      console.log(accumulatedValue)
       currentInput(keyPressed.value)
     }
   }
 
-  // operation but NOT equal sign
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     isOperatorPressed = true
     operation = keyPressed.value
@@ -65,9 +51,8 @@ function getInputType (e) {
 
   if (keyPressed.value === '=') {
     calculator.displayOutput = ''
-
     // not in correct place bc other math operators will be pressed:
-    accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+    // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
     calculate(firstOperand, operation, secondOperand)
     console.log(accumulatedValue) // (38) => storedValue of 25 + 13
   }
