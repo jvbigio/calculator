@@ -106,24 +106,28 @@ ACTUAL: WORKS!
 EXPECTATION: Show 1 in the display
 ACTUAL: WORKS!
 
-// TEST CASE ??
-// Description: Adding 1 + 2 + 3 = 6
+// TEST CASE 
+// Description: Adding 1 + 3 + 5 = 9
 
-1.) Click on the number two button
-EXPECTATION: Show 2 in the display
+1.) Click on the number one button
+EXPECTATION: Show 1 in the display
 ACTUAL: WORKS!
 
-2.) Click on the number five button
-EXPECTATION: Show 25 in the display
+2.) Click on the plus button
+EXPECTATION: still show 1 in display
+ACTUAL: WORKS
+
+3.) Click on the number three button
+EXPECTATION: Show 3 in the display
 ACTUAL: WORKS!
 
 3.) Click on the plus button
-EXPECTATION: Nothing. (Still showing 11 in the display)
+EXPECTATION: show the number 4 in the display
 ACTUAL: WORKS!
 
-4.) Click on the number one button
-EXPECTATION: Show 1 in the display
-ACTUAL: WORKS!
+4.) Click on the number 5 button
+EXPECTATION: show the number 5 in the display
+ACTUAL: shows 1 in the display
 
 5.) Click on the number three button
 EXPECTATION: Show 13 in the display
