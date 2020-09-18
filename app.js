@@ -5,9 +5,7 @@
 // })
 
 const calcDisplay = document.querySelector('.calculator-display')
-const calculator = {
-  displayOutput: ''
-}
+const calculator = { displayOutput: '' }
 let firstOperand = ''
 let secondOperand = ''
 let operation = ''
@@ -25,29 +23,50 @@ function getInputType (e) {
     firstOperand += keyPressed.value
     currentInput(keyPressed.value)
   } else if (keyPressed.classList.contains('number') && operation) {
+    calculator.displayOutput = '' // test
+
     secondOperand += keyPressed.value
+    currentInput(keyPressed.value) // original
+    // new if statement
+    if (secondOperand) {
+      secondOperand = ''
+      secondOperand += keyPressed.value
+      accumulatedValue += parseFloat(secondOperand) // new
+      currentInput(accumulatedValue) // new
+    }
+    currentInput(accumulatedValue)
+
+    // if (accumulatedValue) {
     calculator.displayOutput = ''
-    currentInput(secondOperand)
+    // currentInput(secondOperand) // orig
+    currentInput(keyPressed.value)
+    // currentInput(firstOperand) // keep, remove for test
+    // }
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     if (operation) {
       // continuous
-
-      currentInput(secondOperand)
       if (operation === '+') {
-        currentInput(secondOperand)
+        // original KEEP:
         accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+        // accumulatedValue += parseFloat(secondOperand)
+
+        calculator.displayOutput = ''
+        currentInput(accumulatedValue)
       }
     } else {
       // not continuos
-
+      console.log(operation)
+      currentInput(accumulatedValue)
+      calcDisplay.displayOutput = ''
       operation = keyPressed.value
     }
   }
-
+  // = sign never pressed yet
   if (keyPressed.value === '=') {
     calculator.displayOutput = ''
+    // non-continuous only:
     calculate(firstOperand, operation, secondOperand)
   }
   renderScreen()
