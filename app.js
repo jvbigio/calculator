@@ -21,10 +21,10 @@ function getInputType (e) {
     calculator.displayOutput = ''
     secondOperand += keyPressed.value
     currentInput(keyPressed.value)
-    // if (secondOperand) {
-    //   accumulatedValue += parseFloat(secondOperand)
-    //   currentInput(accumulatedValue) // new
-    // }
+    if (secondOperand) {
+      accumulatedValue += parseFloat(secondOperand)
+      currentInput(accumulatedValue) // new
+    }
     currentInput(accumulatedValue)
 
     calculator.displayOutput = ''
@@ -34,17 +34,18 @@ function getInputType (e) {
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     // if (operation) { // Andy's code
     // continuous
+    // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
 
-    // if (operation === '+') {
-    if (operation === '+' && accumulatedValue === isNaN) { // new
+    if (operation === '+') {
       accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
       // accumulatedValue += parseFloat(secondOperand)
       calculator.displayOutput = ''
       secondOperand = ''
       currentInput(accumulatedValue)
-    } else if (operation === '+' && accumulatedValue !== isNaN) {
-      accumulatedValue += secondOperand
-      currentInput(accumulatedValue)
+      // if (accumulatedValue === isNaN) {
+      //   console.log(accumulatedValue)
+      //   currentInput(accumulatedValue)
+      //   secondOperand = ''
       // }
     } else { // Andy's code
       // not continuous
@@ -52,6 +53,7 @@ function getInputType (e) {
       calcDisplay.displayOutput = ''
       operation = keyPressed.value
       accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+      // calculate(firstOperand, operation, secondOperand) // new
     }
   }
   if (keyPressed.value === '=') {
@@ -72,14 +74,18 @@ function calculate (num1, operator, num2) {
 
   if (operator === '*') {
     computedValue = parseFloat(num1) * parseFloat(num2)
+    return currentInput(computedValue)
   } else if (operator === '/') {
     computedValue = parseFloat(num1) / parseFloat(num2)
+    return currentInput(computedValue)
   } else if (operator === '+') {
     computedValue = parseFloat(num1) + parseFloat(num2)
+    return currentInput(computedValue)
   } else if (operator === '-') {
     computedValue = parseFloat(num1) - parseFloat(num2)
+    return currentInput(computedValue)
   }
-  currentInput(computedValue)
+  currentInput(num2)
 }
 
 function renderScreen () {
