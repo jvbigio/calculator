@@ -1,4 +1,4 @@
-// TEST CASE 1
+// TEST CASE 
 // Description: Adding 1 + 2 = 3
 
 1.) Click on the number one button
@@ -17,7 +17,7 @@ ACTUAL: 2 shows on the display
 EXPECTATION: Show 3 in the display
 ACTUAL: WORKS!
 
-// TEST CASE 2
+// TEST CASE
 // Description: Adding 25 + 13 = 38
 
 1.) Click on the number two button
@@ -29,7 +29,7 @@ EXPECTATION: Show 25 in the display
 ACTUAL: WORKS!
 
 3.) Click on the plus button
-EXPECTATION: Nothing. (Still showing 25 in the display)
+EXPECTATION: Nothing. (Still showing 11 in the display)
 ACTUAL: WORKS!
 
 4.) Click on the number one button
@@ -43,3 +43,93 @@ ACTUAL: WORKS!
 6.) Click on the equals button
 EXPECTATION: Show 38 in the display
 ACTUAL: WORKS!
+
+// TEST CASE
+// Description: SUBTRACT 3 - 2 = 1
+
+1.) Click on the number three button
+EXPECTATION: Show 3 in the display
+ACTUAL: WORKS!
+
+2.) Click on the minus button
+EXPECTATION: Nothing. (Still showing 3 in the display)
+ACTUAL: WORKS!
+
+3.) Click on the number two button
+EXPECTATION: Show 2 in the display
+ACTUAL: WORKS!
+
+// TEST CASE
+// Description: SUBTRACT 33 - 22 = 11
+
+1.) Click on the number three button
+EXPECTATION: Show 3 in the display
+ACTUAL: WORKS!
+
+2.) Click on the number three button
+EXPECTATION: Show 33 in the display
+ACTUAL: WORKS!
+
+3.) Click on the minus button
+EXPECTATION: Nothing. (Still showing 11 in the display)
+ACTUAL: WORKS!
+
+4.) Click on the number two button
+EXPECTATION: Show 2 in the display
+ACTUAL: WORKS!
+
+5.) Click on the number two button
+EXPECTATION: Show 22 in the display
+ACTUAL: WORKS!
+
+6.) Click on the equals button
+EXPECTATION: Show 11 in the display
+ACTUAL: WORKS!
+
+
+// TEST CASE
+// Description: Adding 3 * 2 = 6
+
+1.) Click on the number three button
+EXPECTATION: Show 3 in the display
+ACTUAL: WORKS!
+
+2.) Click on the minus button
+EXPECTATION: Nothing. (Still showing 3 in the display)
+ACTUAL: WORKS!
+
+3.) Click on the number two button
+EXPECTATION: Show 2 in the display
+ACTUAL: WORKS!
+
+5.) Click on the equals button
+EXPECTATION: Show 1 in the display
+ACTUAL: WORKS!
+
+// TEST CASE
+// Description: Continuous adding 1 + 3 + 5 + (should show 9 here)
+
+1.) Click on the number one button
+EXPECTATION: Show 1 in the display
+ACTUAL: WORKS
+
+2.) Click on the plus button
+EXPECTATION: still show 1 in display
+ACTUAL: WORKS
+
+3.) Click on the number three button
+EXPECTATION: Show 3 in the display
+ACTUAL: WORKS
+
+4.) Click on the plus button
+EXPECTATION: show the number 4 in the display
+ACTUAL: WORKS
+
+5.) Click on the number 5 button
+EXPECTATION: show the number 5 in the display
+ACTUAL: WORKS
+
+6.) Click on the plus button
+EXPECTATION: Show 9 in the display
+ACTUAL: shows 6 in the display
+
