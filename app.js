@@ -1,16 +1,9 @@
-// const result = document.querySelector('.result')
-// document.addEventListener('DOMContentLoaded', function () {
-//   // renderScreen()
-//   // captureDigits()
-// })
-
 const calcDisplay = document.querySelector('.calculator-display')
 const calculator = { displayOutput: '' }
 let firstOperand = ''
 let secondOperand = ''
 let operation = ''
 let accumulatedValue = ''
-// let isOperatorPressed = false
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInputType)
 
@@ -23,53 +16,47 @@ function getInputType (e) {
     firstOperand += keyPressed.value
     currentInput(keyPressed.value)
   } else if (keyPressed.classList.contains('number') && operation) {
-    calculator.displayOutput = '' // test
-
+    calculator.displayOutput = ''
     secondOperand += keyPressed.value
-    currentInput(keyPressed.value) // original
-    // new if statement
+    currentInput(keyPressed.value)
     if (secondOperand) {
-      secondOperand = ''
-      secondOperand += keyPressed.value
-      accumulatedValue += parseFloat(secondOperand) // new
+      accumulatedValue += parseFloat(secondOperand)
       currentInput(accumulatedValue) // new
     }
     currentInput(accumulatedValue)
 
-    // if (accumulatedValue) {
     calculator.displayOutput = ''
-    // currentInput(secondOperand) // orig
-    currentInput(keyPressed.value)
-    // currentInput(firstOperand) // keep, remove for test
-    // }
+    currentInput(secondOperand)
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
-    if (operation) {
-      // continuous
-      if (operation === '+') {
-        // original KEEP:
-        accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
-        // accumulatedValue += parseFloat(secondOperand)
+    // if (operation) {
+    // continuous
+    // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
 
-        calculator.displayOutput = ''
+    if (operation === '+') {
+      accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+      // accumulatedValue += parseFloat(secondOperand)
+      calculator.displayOutput = ''
+      secondOperand = ''
+      currentInput(accumulatedValue)
+      if (accumulatedValue === isNaN) {
+        console.log(accumulatedValue)
         currentInput(accumulatedValue)
+        secondOperand = ''
       }
     } else {
-      // not continuos
-      console.log(operation)
+      // not continuous
       currentInput(accumulatedValue)
       calcDisplay.displayOutput = ''
       operation = keyPressed.value
+      accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
     }
   }
-  // = sign never pressed yet
   if (keyPressed.value === '=') {
     calculator.displayOutput = ''
-    // non-continuous only:
+    // currentInput(accumulatedValue)
     calculate(firstOperand, operation, secondOperand)
-    // accumulatedValue += parseFloat(secondOperand)
-    // currentInput(accumulatedValue) // doesn't belong here
   }
   renderScreen()
 }
