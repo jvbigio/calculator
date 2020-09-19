@@ -12,7 +12,7 @@ buttons.addEventListener('click', getInputType)
 // TODO:
 // fix if statements
 
-function getInputType(e) {
+function getInputType (e) {
   const keyPressed = e.target
   if (keyPressed.classList.contains('number') && !operation) {
     firstOperand += keyPressed.value
@@ -57,12 +57,12 @@ function getInputType(e) {
   renderScreen()
 }
 
-function currentInput(numbers) {
+function currentInput (numbers) {
   calculator.displayOutput += numbers
   renderScreen()
 }
 
-function calculate(num1, operator, num2) {
+function calculate (num1, operator, num2) {
   let computedValue
 
   if (operator === '*') {
@@ -77,6 +77,6 @@ function calculate(num1, operator, num2) {
   currentInput(computedValue)
 }
 
-function renderScreen() {
+function renderScreen () {
   calcDisplay.textContent = calculator.displayOutput
 }
