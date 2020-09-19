@@ -32,7 +32,7 @@ function getInputType (e) {
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
-    // if (operation) {
+    // if (operation) { // Andy's code
     // continuous
     // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
 
@@ -42,17 +42,18 @@ function getInputType (e) {
       calculator.displayOutput = ''
       secondOperand = ''
       currentInput(accumulatedValue)
-      if (accumulatedValue === isNaN) {
-        console.log(accumulatedValue)
-        currentInput(accumulatedValue)
-        secondOperand = ''
-      }
-    } else {
+      // if (accumulatedValue === isNaN) {
+      //   console.log(accumulatedValue)
+      //   currentInput(accumulatedValue)
+      //   secondOperand = ''
+      // }
+    } else { // Andy's code
       // not continuous
       currentInput(accumulatedValue)
       calcDisplay.displayOutput = ''
       operation = keyPressed.value
       accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+      // calculate(firstOperand, operation, secondOperand) // new
     }
   }
   if (keyPressed.value === '=') {
@@ -73,14 +74,18 @@ function calculate (num1, operator, num2) {
 
   if (operator === '*') {
     computedValue = parseFloat(num1) * parseFloat(num2)
+    return currentInput(computedValue)
   } else if (operator === '/') {
     computedValue = parseFloat(num1) / parseFloat(num2)
+    return currentInput(computedValue)
   } else if (operator === '+') {
     computedValue = parseFloat(num1) + parseFloat(num2)
+    return currentInput(computedValue)
   } else if (operator === '-') {
     computedValue = parseFloat(num1) - parseFloat(num2)
+    return currentInput(computedValue)
   }
-  currentInput(computedValue)
+  currentInput(num2)
 }
 
 function renderScreen () {
