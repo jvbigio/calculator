@@ -41,11 +41,6 @@ function getInputType (e) {
       calculator.displayOutput = ''
       secondOperand = ''
       currentInput(accumulatedValue)
-      if (accumulatedValue === isNaN) {
-        console.log(accumulatedValue)
-        currentInput(accumulatedValue)
-        secondOperand = ''
-      }
     } else { // Andy's code
       // not continuous
       currentInput(accumulatedValue)
