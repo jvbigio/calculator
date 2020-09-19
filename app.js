@@ -1,5 +1,7 @@
 const calcDisplay = document.querySelector('.calculator-display')
-const calculator = { displayOutput: '' }
+const calculator = {
+  displayOutput: ''
+}
 let firstOperand = ''
 let secondOperand = ''
 let operation = ''
@@ -10,7 +12,7 @@ buttons.addEventListener('click', getInputType)
 // TODO:
 // fix if statements
 
-function getInputType (e) {
+function getInputType(e) {
   const keyPressed = e.target
   if (keyPressed.classList.contains('number') && !operation) {
     firstOperand += keyPressed.value
@@ -30,9 +32,8 @@ function getInputType (e) {
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
-    // if (operation) {
+    // if (operation) { // Andy's code
     // continuous
-    // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
 
     if (operation === '+') {
       accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
@@ -40,12 +41,7 @@ function getInputType (e) {
       calculator.displayOutput = ''
       secondOperand = ''
       currentInput(accumulatedValue)
-      if (accumulatedValue === isNaN) {
-        console.log(accumulatedValue)
-        currentInput(accumulatedValue)
-        secondOperand = ''
-      }
-    } else {
+    } else { // Andy's code
       // not continuous
       currentInput(accumulatedValue)
       calcDisplay.displayOutput = ''
@@ -61,12 +57,12 @@ function getInputType (e) {
   renderScreen()
 }
 
-function currentInput (numbers) {
+function currentInput(numbers) {
   calculator.displayOutput += numbers
   renderScreen()
 }
 
-function calculate (num1, operator, num2) {
+function calculate(num1, operator, num2) {
   let computedValue
 
   if (operator === '*') {
@@ -81,6 +77,6 @@ function calculate (num1, operator, num2) {
   currentInput(computedValue)
 }
 
-function renderScreen () {
+function renderScreen() {
   calcDisplay.textContent = calculator.displayOutput
 }
