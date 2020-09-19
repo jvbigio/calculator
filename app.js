@@ -1,5 +1,7 @@
 const calcDisplay = document.querySelector('.calculator-display')
-const calculator = { displayOutput: '' }
+const calculator = {
+  displayOutput: ''
+}
 let firstOperand = ''
 let secondOperand = ''
 let operation = ''
@@ -17,41 +19,45 @@ function getInputType (e) {
     currentInput(keyPressed.value)
   } else if (keyPressed.classList.contains('number') && operation) {
     calculator.displayOutput = ''
-
     secondOperand += keyPressed.value
     currentInput(keyPressed.value)
     if (secondOperand) {
-      secondOperand = ''
-      secondOperand += keyPressed.value
       accumulatedValue += parseFloat(secondOperand)
-      currentInput(accumulatedValue)
+      currentInput(accumulatedValue) // new
     }
     currentInput(accumulatedValue)
 
     calculator.displayOutput = ''
-    currentInput(keyPressed.value)
+    currentInput(secondOperand)
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     // if (operation) { // Andy's code
     // continuous
+
     if (operation === '+') {
       accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
-
+      // accumulatedValue += parseFloat(secondOperand)
       calculator.displayOutput = ''
+      secondOperand = ''
       currentInput(accumulatedValue)
-      // }
+      if (accumulatedValue === isNaN) {
+        console.log(accumulatedValue)
+        currentInput(accumulatedValue)
+        secondOperand = ''
+      }
     } else { // Andy's code
-      // not continuos
+      // not continuous
       currentInput(accumulatedValue)
       calcDisplay.displayOutput = ''
       operation = keyPressed.value
+      accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
     }
   }
   if (keyPressed.value === '=') {
     calculator.displayOutput = ''
+    // currentInput(accumulatedValue)
     calculate(firstOperand, operation, secondOperand)
-    accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
   }
   renderScreen()
 }
@@ -66,16 +72,12 @@ function calculate (num1, operator, num2) {
 
   if (operator === '*') {
     computedValue = parseFloat(num1) * parseFloat(num2)
-    // return currentInput(computedValue)
   } else if (operator === '/') {
     computedValue = parseFloat(num1) / parseFloat(num2)
-    // return currentInput(computedValue)
   } else if (operator === '+') {
     computedValue = parseFloat(num1) + parseFloat(num2)
-    // return currentInput(computedValue)
   } else if (operator === '-') {
     computedValue = parseFloat(num1) - parseFloat(num2)
-    // return currentInput(computedValue)
   }
   currentInput(computedValue)
 }
