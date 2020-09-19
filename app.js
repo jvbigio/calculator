@@ -21,10 +21,10 @@ function getInputType (e) {
     calculator.displayOutput = ''
     secondOperand += keyPressed.value
     currentInput(keyPressed.value)
-    if (secondOperand) {
-      accumulatedValue += parseFloat(secondOperand)
-      currentInput(accumulatedValue) // new
-    }
+    // if (secondOperand) {
+    //   accumulatedValue += parseFloat(secondOperand)
+    //   currentInput(accumulatedValue) // new
+    // }
     currentInput(accumulatedValue)
 
     calculator.displayOutput = ''
@@ -35,12 +35,17 @@ function getInputType (e) {
     // if (operation) { // Andy's code
     // continuous
 
-    if (operation === '+') {
+    // if (operation === '+') {
+    if (operation === '+' && accumulatedValue === isNaN) { // new
       accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
       // accumulatedValue += parseFloat(secondOperand)
       calculator.displayOutput = ''
       secondOperand = ''
       currentInput(accumulatedValue)
+    } else if (operation === '+' && accumulatedValue !== isNaN) {
+      accumulatedValue += secondOperand
+      currentInput(accumulatedValue)
+    // }
     } else { // Andy's code
       // not continuous
       currentInput(accumulatedValue)
