@@ -5,7 +5,7 @@ const calculator = {
 let firstOperand = ''
 let secondOperand = ''
 let operation = ''
-let accumulatedValue = ''
+const accumulatedValue = ''
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInputType)
 
@@ -13,47 +13,57 @@ buttons.addEventListener('click', getInputType)
 // fix if statements
 
 function getInputType (e) {
+  debugger
   const keyPressed = e.target
   if (keyPressed.classList.contains('number') && !operation) {
     firstOperand += keyPressed.value
     currentInput(keyPressed.value)
   } else if (keyPressed.classList.contains('number') && operation) {
     calculator.displayOutput = ''
+    // calculator.displayOutput = firstOperand // new
     secondOperand += keyPressed.value
     currentInput(keyPressed.value)
-    if (secondOperand) {
-      accumulatedValue += parseFloat(secondOperand)
-      currentInput(accumulatedValue) // new
-    }
-    currentInput(accumulatedValue)
+    // if (secondOperand) {
+    //   accumulatedValue += parseFloat(secondOperand)
+    //   currentInput(accumulatedValue) // new
+    // }
+    // currentInput(accumulatedValue)
 
     calculator.displayOutput = ''
-    currentInput(secondOperand)
+    currentInput(secondOperand) // keep, shows 2ndOp in: 1 + (3)
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
-    // if (operation) { // Andy's code
-    // continuous
-    // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+    if (operation) { // if in continuous operation
+      // continuous
+      // then inside of this use if op = +, -, *, /
+      if (operation === '+') {
+        calculator.displayOutput = '' // new
 
-    if (operation === '+') {
-      accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
-      // accumulatedValue += parseFloat(secondOperand)
-      calculator.displayOutput = ''
-      secondOperand = ''
-      currentInput(accumulatedValue)
-      // if (accumulatedValue === isNaN) {
-      //   console.log(accumulatedValue)
-      //   currentInput(accumulatedValue)
-      //   secondOperand = ''
-      // }
+        currentInput(firstOperand)
+
+        firstOperand = parseFloat(firstOperand) + parseFloat(secondOperand)
+        // accumulatedValue += parseFloat(secondOperand)
+        calculator.displayOutput = ''
+        secondOperand = ''
+        currentInput(firstOperand) // keep
+      }
+      if (operation === '-') {
+        // do math
+      }
+      if (operation === '*') {
+        // do math
+      }
+      if (operation === '/') {
+        // do math
+      }
     } else { // Andy's code
       // not continuous
-      currentInput(accumulatedValue)
+      // currentInput(accumulatedValue)
       calcDisplay.displayOutput = ''
       operation = keyPressed.value
-      accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
-      // calculate(firstOperand, operation, secondOperand) // new
+      // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+      // calculate(firstOperand, operation, secondOperand) // 1NaN shows
     }
   }
   if (keyPressed.value === '=') {
