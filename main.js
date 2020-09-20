@@ -1,3 +1,5 @@
+// use this main.js for refactoring to master once working
+
 const calcDisplay = document.querySelector('.calculator-display')
 const calculator = {
   displayOutput: ''
@@ -12,8 +14,11 @@ buttons.addEventListener('click', getInputType)
 // TODO:
 // fix if statements
 
+// responding to ANY button press
 function getInputType (e) {
+  debugger
   const keyPressed = e.target
+  // handling number press
   if (keyPressed.classList.contains('number') && !operation) {
     firstOperand += keyPressed.value
     currentInput(keyPressed.value)
@@ -30,38 +35,51 @@ function getInputType (e) {
     calculator.displayOutput = ''
     currentInput(secondOperand)
   }
-
+  // handling operation press
+  // whatever we do inside line 41 -68 doesn't related to 69-75
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
-    // if (operation) { // Andy's code
-    // continuous
-    // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+    processOperationBtnPress()
+  }
+  if (keyPressed.value === '=') {
+    processEqualBtnPress()
+  }
+  renderScreen()
+}
 
+function processOperationBtnPress () {
+  // const isInContinuosOperation = operation // equated to same as below
+  if (operation) { // if in continuous operation
+    // continuous
+    // then inside of this use if op = +, -, *, /
     if (operation === '+') {
       accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
       // accumulatedValue += parseFloat(secondOperand)
       calculator.displayOutput = ''
       secondOperand = ''
-      currentInput(accumulatedValue)
-      // if (accumulatedValue === isNaN) {
-      //   console.log(accumulatedValue)
-      //   currentInput(accumulatedValue)
-      //   secondOperand = ''
-      // }
-    } else { // Andy's code
-      // not continuous
-      currentInput(accumulatedValue)
-      calcDisplay.displayOutput = ''
-      operation = keyPressed.value
-      accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
-      // calculate(firstOperand, operation, secondOperand) // new
+      // currentInput(accumulatedValue)
     }
+    if (operation === '-') {
+      // do math
+    }
+    if (operation === '*') {
+      // do math
+    }
+    if (operation === '/') {
+      // do math
+    }
+  } else { // not continuous
+    currentInput(accumulatedValue)
+    calcDisplay.displayOutput = ''
+    operation = keyPressed.value
+    // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
+    calculate(firstOperand, operation, secondOperand) // new
   }
-  if (keyPressed.value === '=') {
-    calculator.displayOutput = ''
-    // currentInput(accumulatedValue)
-    calculate(firstOperand, operation, secondOperand)
-  }
-  renderScreen()
+}
+
+function processEqualBtnPress () {
+  calculator.displayOutput = ''
+  // currentInput(accumulatedValue)
+  calculate(firstOperand, operation, secondOperand)
 }
 
 function currentInput (numbers) {
