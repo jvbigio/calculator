@@ -5,48 +5,33 @@ const calculator = {
 let firstOperand = ''
 let secondOperand = ''
 let operation = ''
-let accumulatedValue = ''
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInputType)
 
-// TODO:
-// fix if statements
-
 function getInputType (e) {
-  debugger
+  // debugger
   const keyPressed = e.target
   if (keyPressed.classList.contains('number') && !operation) {
     firstOperand += keyPressed.value
     currentInput(keyPressed.value)
   } else if (keyPressed.classList.contains('number') && operation) {
     calculator.displayOutput = ''
-    // calculator.displayOutput = firstOperand // new
     secondOperand += keyPressed.value
     currentInput(keyPressed.value)
-    // if (secondOperand) {
-    //   accumulatedValue += parseFloat(secondOperand)
-    //   currentInput(accumulatedValue) // new
-    // }
-    // currentInput(accumulatedValue)
-
     calculator.displayOutput = ''
-    currentInput(secondOperand) // keep, shows 2ndOp in: 1 + (3)
+    currentInput(secondOperand)
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     if (operation) { // if in continuous operation
-      // continuous
       // then inside of this use if op = +, -, *, /
       if (operation === '+') {
-        calculator.displayOutput = '' // new
-
+        calculator.displayOutput = ''
         currentInput(firstOperand)
-
-        firstOperand = parseFloat(firstOperand) + parseFloat(secondOperand) 
-        // accumulatedValue += parseFloat(secondOperand)
+        firstOperand = parseFloat(firstOperand) + parseFloat(secondOperand)
         calculator.displayOutput = ''
         secondOperand = ''
-        currentInput(firstOperand) // keep
+        currentInput(firstOperand)
       }
       if (operation === '-') {
         // do math
@@ -57,18 +42,13 @@ function getInputType (e) {
       if (operation === '/') {
         // do math
       }
-    } else { // Andy's code
-      // not continuous
-      // currentInput(accumulatedValue)
+    } else { // not continuous
       calcDisplay.displayOutput = ''
       operation = keyPressed.value
-      // accumulatedValue = parseFloat(firstOperand) + parseFloat(secondOperand)
-      // calculate(firstOperand, operation, secondOperand) // 1NaN shows
     }
   }
   if (keyPressed.value === '=') {
     calculator.displayOutput = ''
-    // currentInput(accumulatedValue)
     calculate(firstOperand, operation, secondOperand)
   }
   renderScreen()
