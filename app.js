@@ -23,6 +23,8 @@ function getInputType (e) {
   }
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
+    // processOperationBtnPress()
+
     if (operation) { // if in continuous operation
       // then inside of this use if op = +, -, *, /
       if (operation === '+') {
@@ -50,9 +52,42 @@ function getInputType (e) {
   if (keyPressed.value === '=') {
     calculator.displayOutput = ''
     calculate(firstOperand, operation, secondOperand)
+    // processEqualBtnPress()
   }
   renderScreen()
 }
+
+// function processOperationBtnPress () {
+
+//   if (operation) { // if in continuous operation
+//     // then inside of this use if op = +, -, *, /
+//     if (operation === '+') {
+//       calculator.displayOutput = ''
+//       currentInput(firstOperand)
+//       firstOperand = parseFloat(firstOperand) + parseFloat(secondOperand)
+//       calculator.displayOutput = ''
+//       secondOperand = ''
+//       currentInput(firstOperand)
+//     }
+//     if (operation === '-') {
+//       // do math
+//     }
+//     if (operation === '*') {
+//       // do math
+//     }
+//     if (operation === '/') {
+//       // do math
+//     }
+//   } else { // not continuous
+//     calcDisplay.displayOutput = ''
+//     operation = keyPressed.value
+//   }
+// }
+
+// function processEqualBtnPress () {
+//   calculator.displayOutput = ''
+//   calculate(firstOperand, operation, secondOperand)
+// }
 
 function currentInput (numbers) {
   calculator.displayOutput += numbers
