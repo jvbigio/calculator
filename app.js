@@ -113,18 +113,29 @@ function calculate (num1, operator, num2) {
   let computedValue
   // debugger
   if (operator === '*') {
-    computedValue = parseFloat(num1) * parseFloat(num2)
+    computedValue = num1 * num2
+    // BigInt(computedValue)
+    // const numStr = computedValue.toString()
+    // console.log(typeof numStr)
+    // console.log(numStr.length)
+    // return (numStr.length > 10) ? currentInput(numStr / 10) : currentInput(numStr)
+    // return currentInput(numStr)
+    // console.log(computedValue.length)
+    // computedValue = parseFloat(num1) * parseFloat(num2)
     return currentInput(computedValue)
   } else if (operator === '/') {
-    computedValue = parseFloat(num1) / parseFloat(num2)
+    // computedValue = parseFloat(num1) / parseFloat(num2) // do we need to parse? already did earlier
+    computedValue = num1 / num2
     const isDecimal = (computedValue - Math.floor(computedValue)) !== 0
 
     return (isDecimal) ? currentInput(computedValue.toFixed(3)) : currentInput(computedValue)
   } else if (operator === '+') {
-    computedValue = parseFloat(num1) + parseFloat(num2)
+    // computedValue = parseFloat(num1) + parseFloat(num2)
+    computedValue = num1 + num2
     return currentInput(computedValue)
   } else if (operator === '-') {
-    computedValue = parseFloat(num1) - parseFloat(num2)
+    // computedValue = parseFloat(num1) - parseFloat(num2)
+    computedValue = num1 - num2
     return currentInput(computedValue)
   }
   // currentInput(num2)

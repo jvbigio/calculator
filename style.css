@@ -49,7 +49,10 @@ body {
   margin-top: -0.75rem;
   width: 250px;
   text-align: right;
-  font-size: 2.8125rem;
+  /* original: */
+  /* font-size: 2.8125rem; */
+  font-size: 2rem;
+  overflow: hidden;
 }
 
 
