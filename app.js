@@ -126,9 +126,15 @@ function processMemoryBtnPress (e) {
   if (memoryKey === 'c') {
     clearCalculator()
   } else if (memoryKey === 'mc') {
-    console.log(`${memoryKey} pressed`)
+    clearLS()
   } else if (memoryKey === 'm+') {
-    saveValue()
+    // const number = calculator.displayOutput
+    // localStorage.clear()
+    const number = firstOperand
+    saveValue(number)
+    console.log(number)
+  } else if (memoryKey === 'mr') {
+    getSavedValue()
   }
   // switch (memoryKey) {
   //   case 'c':
@@ -150,8 +156,28 @@ function clearCalculator () {
   operation = ''
 }
 
-function saveValue () {
-  const storedValue = valueStorageHelper()
+function saveValue (currentNumber) {
+  // let value = valueStorageHelper()
+  let value = ''
+  // value.push(currentNumber)
+  value = currentNumber
+  console.log(value)
+  localStorage.setItem('value', JSON.stringify(value))
+}
+
+function getSavedValue () {
+  // value = localStorage.getItem('value') // '7'
+  const value = JSON.parse(localStorage.getItem('value'))
+  // const value = valueStorageHelper()
+  // calculator.displayOutput = value
+  firstOperand = value
+  currentInput(firstOperand)
+}
+
+function clearLS () {
+  // const value = valueStorageHelper()
+  localStorage.clear()
+  calculator.displayOutput = '0'
 }
 
 function currentInput (numbers) {
@@ -188,9 +214,14 @@ function renderScreen () {
   calcDisplay.textContent = calculator.displayOutput
 }
 
-function valueStorageHelper () {
+// function valueStorageHelper () {
+//   // const value = !JSON.parse(localStorage.getItem('value')) ? []
+//   //   : JSON.parse(localStorage.getItem('value'))
 
-}
+//   const value = !JSON.parse(localStorage.getItem('value')) ? '' : JSON.parse(localStorage.getItem('value'))
+
+//   return value
+// }
 
 /*
 function calculator (num1, operator, num2) {
