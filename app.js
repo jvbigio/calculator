@@ -1,7 +1,6 @@
 const calcDisplay = document.querySelector('.calculator-display')
 const calculator = {
-  displayOutput: '' // orig
-  // displayOutput: '0'
+  displayOutput: ''
 }
 let firstOperand = ''
 let secondOperand = ''
@@ -93,17 +92,6 @@ function processMemoryBtnPress (e) {
   } else if (memoryKey === 'mr') {
     getSavedValue()
   }
-  // switch (memoryKey) {
-  //   case 'c':
-  //     console.log(`${memoryKey} pressed`)
-  //     break
-  //   case 'mc':
-  //     console.log(`${memoryKey} pressed`)
-  //     break
-  //   case 'm+':
-  //     console.log(`${memoryKey} pressed`)
-  //     break
-  // }
 }
 
 function clearCalculator () {
@@ -113,9 +101,9 @@ function clearCalculator () {
   operation = ''
 }
 
-function saveValue (computedValue) {
+function saveValue (currentNumber) {
   const value = valueStorageHelper()
-  value.push(computedValue)
+  value.push(currentNumber)
   localStorage.setItem('value', JSON.stringify(value))
 }
 
@@ -132,32 +120,26 @@ function clearLS () {
 
 function currentInput (numbers) {
   calculator.displayOutput = calculator.displayOutput === '0' ? numbers : calculator.displayOutput += numbers
-  // calculator.displayOutput += numbers // orig
   renderScreen()
 }
 
 function calculate (num1, operator, num2) {
-  // let computedValue // original, keep
+  let computedValue
   if (operator === '*') {
-    // computedValue = num1 * num2
     computedValue = parseFloat(num1) * parseFloat(num2)
     return currentInput(computedValue)
   } else if (operator === '/') {
     computedValue = parseFloat(num1) / parseFloat(num2)
-    // computedValue = num1 / num2
     const isDecimal = (computedValue - Math.floor(computedValue)) !== 0
 
     return (isDecimal) ? currentInput(computedValue.toFixed(3)) : currentInput(computedValue)
   } else if (operator === '+') {
     computedValue = parseFloat(num1) + parseFloat(num2)
-    // computedValue = num1 + num2
     return currentInput(computedValue)
   } else if (operator === '-') {
     computedValue = parseFloat(num1) - parseFloat(num2)
-    // computedValue = num1 - num2
     return currentInput(computedValue)
   }
-  // currentInput(num2)
 }
 
 function renderScreen () {
