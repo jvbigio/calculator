@@ -6,6 +6,7 @@ const calculator = {
 let firstOperand = ''
 let secondOperand = ''
 let operation = ''
+let computedValue
 const buttons = document.querySelector('.buttons-container')
 buttons.addEventListener('click', getInputType)
 
@@ -24,48 +25,8 @@ function getInputType (e) {
 
   if (keyPressed.classList.contains('operation') && keyPressed.value !== '=') {
     processOperationBtnPress(e)
-
-    // if (operation) {
-    //   if (operation === '+') {
-    //     calculator.displayOutput = ''
-    //     currentInput(firstOperand)
-    //     firstOperand = parseFloat(firstOperand) + parseFloat(secondOperand)
-    //     calculator.displayOutput = ''
-    //     secondOperand = ''
-    //     currentInput(firstOperand)
-    //   }
-    //   if (operation === '-') {
-    //     calculator.displayOutput = ''
-    //     currentInput(firstOperand)
-    //     firstOperand = parseFloat(firstOperand) - parseFloat(secondOperand)
-    //     calculator.displayOutput = ''
-    //     secondOperand = ''
-    //     currentInput(firstOperand)
-    //   }
-    //   if (operation === '*') {
-    //     calculator.displayOutput = ''
-    //     currentInput(firstOperand)
-    //     firstOperand = parseFloat(firstOperand) * parseFloat(secondOperand)
-    //     calculator.displayOutput = ''
-    //     secondOperand = ''
-    //     currentInput(firstOperand)
-    //   }
-    //   if (operation === '/') {
-    //     calculator.displayOutput = ''
-    //     currentInput(firstOperand)
-    //     firstOperand = parseFloat(firstOperand) / parseFloat(secondOperand)
-    //     calculator.displayOutput = ''
-    //     secondOperand = ''
-    //     currentInput(firstOperand)
-    //   }
-    // } else {
-    //   calcDisplay.displayOutput = ''
-    //   operation = keyPressed.value
-    // }
   }
   if (keyPressed.value === '=') {
-    // calculator.displayOutput = ''
-    // calculate(firstOperand, operation, secondOperand)
     processEqualBtnPress(e)
   }
   if (keyPressed.classList.contains('memory-key')) {
@@ -128,14 +89,15 @@ function processMemoryBtnPress (e) {
   } else if (memoryKey === 'mc') {
     clearLS()
   } else if (memoryKey === 'm+') {
-    // const number = calculator.displayOutput
+    // let number = calculator.displayOutput // keep
     // localStorage.clear()
-    const number = firstOperand
-    saveValue(number)
-    console.log(number)
+    // number = firstOperand // keep
+    // firstOperand = calculator.displayOutput
+    // saveValue(number) // keep
+    saveValue(computedValue)
+    console.log(computedValue)
   } else if (memoryKey === 'mr') {
     getSavedValue()
-    
   }
   // switch (memoryKey) {
   //   case 'c':
@@ -159,7 +121,6 @@ function clearCalculator () {
 
 function saveValue (currentNumber) {
   let value = valueStorageHelper()
-  // let value = ''
   value.push(currentNumber)
   value = currentNumber
   console.log(value)
@@ -167,17 +128,16 @@ function saveValue (currentNumber) {
 }
 
 function getSavedValue () {
-  // value = localStorage.getItem('value') // '7'
-  // const value = JSON.parse(localStorage.getItem('value'))
   const value = valueStorageHelper()
-  // calculator.displayOutput = value
-  firstOperand = value
-  return currentInput(firstOperand)
-
+  // firstOperand = value
+  computedValue = value
+  // value.forEach(number => console.log(number))
+  // value = computedValue
+  // return currentInput(firstOperand) // keep
+  return currentInput(computedValue)
 }
 
 function clearLS () {
-  // const value = valueStorageHelper()
   localStorage.clear()
   calculator.displayOutput = '0'
 }
@@ -189,7 +149,7 @@ function currentInput (numbers) {
 }
 
 function calculate (num1, operator, num2) {
-  let computedValue
+  // let computedValue // original, keep
   if (operator === '*') {
     // computedValue = num1 * num2
     computedValue = parseFloat(num1) * parseFloat(num2)
@@ -217,10 +177,7 @@ function renderScreen () {
 }
 
 function valueStorageHelper () {
-  const value = !JSON.parse(localStorage.getItem('value')) ? []
-    : JSON.parse(localStorage.getItem('value'))
-
-  // const value = !JSON.parse(localStorage.getItem('value')) ? '' : JSON.parse(localStorage.getItem('value'))
+  const value = !JSON.parse(localStorage.getItem('value')) ? [] : JSON.parse(localStorage.getItem('value'))
 
   return value
 }
