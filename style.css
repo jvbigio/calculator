@@ -85,7 +85,9 @@ button {
 }
 
 .equals {
+  /* flex-grow: 4; */
   flex-grow: 4;
+  /* flex-basis: 100%; */
 }
 
 /* original */

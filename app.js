@@ -89,13 +89,7 @@ function processMemoryBtnPress (e) {
   } else if (memoryKey === 'mc') {
     clearLS()
   } else if (memoryKey === 'm+') {
-    // let number = calculator.displayOutput // keep
-    // localStorage.clear()
-    // number = firstOperand // keep
-    // firstOperand = calculator.displayOutput
-    // saveValue(number) // keep
-    saveValue(computedValue)
-    console.log(computedValue)
+    saveValue(calculator.displayOutput)
   } else if (memoryKey === 'mr') {
     getSavedValue()
   }
@@ -119,21 +113,15 @@ function clearCalculator () {
   operation = ''
 }
 
-function saveValue (currentNumber) {
-  let value = valueStorageHelper()
-  value.push(currentNumber)
-  value = currentNumber
-  console.log(value)
+function saveValue (computedValue) {
+  const value = valueStorageHelper()
+  value.push(computedValue)
   localStorage.setItem('value', JSON.stringify(value))
 }
 
 function getSavedValue () {
   const value = valueStorageHelper()
-  // firstOperand = value
   computedValue = value
-  // value.forEach(number => console.log(number))
-  // value = computedValue
-  // return currentInput(firstOperand) // keep
   return currentInput(computedValue)
 }
 
