@@ -4,9 +4,12 @@
   padding: 0;
 }
 
-
 body {
+<<<<<<< HEAD
   background: #f2f3f4;
+=======
+  background: #E0FFFF;
+>>>>>>> test-branch
 }
 
 .container {
@@ -16,7 +19,6 @@ body {
   align-items: center;
   height: 500px;
 }
-
 
 .calculator-body {
   border: 3px solid black;
@@ -46,9 +48,9 @@ body {
   margin-top: -0.75rem;
   width: 250px;
   text-align: right;
-  font-size: 2.8125rem;
+  font-size: 2rem;
+  overflow: hidden;
 }
-
 
 .buttons-container {
   display: grid;
@@ -86,8 +88,12 @@ button {
   flex-grow: 2;
 }
 
+<<<<<<< HEAD
 .clear-screen,
 .memory-clear,
 .memory-add {
+=======
+.memory-key {
+>>>>>>> test-branch
   background-color: #77dd77;
 }
