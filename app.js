@@ -151,14 +151,3 @@ function valueStorageHelper () {
 
   return value
 }
-
-/*
-function calculator (num1, operator, num2) {
-  return {
-    '*': num1 * num2,
-    '/': num1 / num2,
-    '+': num1 + num2,
-    '-': num1 - num2
-  }[operator]
-}
-*/

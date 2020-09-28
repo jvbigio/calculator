@@ -4,7 +4,6 @@
   padding: 0;
 }
 
-
 body {
   background: #E0FFFF;
 }
@@ -16,7 +15,6 @@ body {
   align-items: center;
   height: 500px;
 }
-
 
 .calculator-body {
   border: 3px solid black;
@@ -87,8 +85,4 @@ button {
 
 .memory-key {
   background-color: #77dd77;
-}
-
-.btn-active {
-  background: red;
 }
