@@ -74,6 +74,7 @@ function processOperationBtnPress (e) {
     calcDisplay.displayOutput = ''
     operation = keyPressed.value
   }
+  operation = keyPressed.value
 }
 
 function processEqualBtnPress () {
