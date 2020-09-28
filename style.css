@@ -5,11 +5,7 @@
 }
 
 body {
-<<<<<<< HEAD
-  background: #f2f3f4;
-=======
   background: #E0FFFF;
->>>>>>> test-branch
 }
 
 .container {
@@ -53,7 +49,6 @@ body {
 }
 
 .buttons-container {
-  display: grid;
   display: flex;
   flex-wrap: wrap;
   margin-top: 1rem;
@@ -88,12 +83,6 @@ button {
   flex-grow: 2;
 }
 
-<<<<<<< HEAD
-.clear-screen,
-.memory-clear,
-.memory-add {
-=======
 .memory-key {
->>>>>>> test-branch
   background-color: #77dd77;
 }
