@@ -120,6 +120,7 @@ function clearLS () {
 }
 
 function currentInput (numbers) {
+  if (numbers === '.' && calculator.displayOutput.includes('.')) return
   calculator.displayOutput = calculator.displayOutput === '0' ? numbers : calculator.displayOutput += numbers
   renderScreen()
 }
