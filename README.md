@@ -6,7 +6,7 @@ See application [here](https://jvbigio.github.io/calculator/)
 
 Screenshot:
 
-![Image of calculator application](https://i.postimg.cc/mktbyvR7/calculator.png)
+![calculator](https://user-images.githubusercontent.com/43301741/99192533-59ed1800-2741-11eb-8f92-b8393269d9a3.png)
 
 # Summary
 
